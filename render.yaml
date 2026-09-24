@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: request-service-api
+    name: iu-vc-request-service-api
     runtime: docker
     plan: free
     region: singapore
