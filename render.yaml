@@ -1,0 +1,30 @@
+services:
+  - type: web
+    name: request-service-api
+    runtime: docker
+    plan: free
+    region: singapore
+    dockerfilePath: ./deployments/Dockerfile
+    dockerContext: .
+    healthCheckPath: /health
+    envVars:
+      - key: PORT
+        value: "10000"
+      - key: DATABASE_URL
+        sync: false
+      - key: LOG_LEVEL
+        value: "info"
+      - key: DEFAULT_PROVIDER
+        value: "walt"
+      - key: WALT_VERIFIER_MODE
+        value: "legacy"
+      - key: CALLBACK_AUTH_SECRET
+        generateValue: true
+      - key: CALLBACK_BASE_URL
+        sync: false
+      - key: PUBLIC_BASE_URL
+        sync: false
+      - key: WALT_VERIFIER_BASE_URL
+        sync: false
+      - key: WALT_VC_POLICY_WEBHOOK_URL
+        sync: false
