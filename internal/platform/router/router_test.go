@@ -21,3 +21,19 @@ func TestNewServesHealthz(t *testing.T) {
 		t.Fatalf("expected body %q, got %q", "ok", rec.Body.String())
 	}
 }
+
+func TestNewServesHealth(t *testing.T) {
+	req := httptest.NewRequest(http.MethodGet, "/health", nil)
+	rec := httptest.NewRecorder()
+
+	New(nil).ServeHTTP(rec, req)
+
+	if rec.Code != http.StatusOK {
+		t.Fatalf("expected status %d, got %d", http.StatusOK, rec.Code)
+	}
+
+	if strings.TrimSpace(rec.Body.String()) != "ok" {
+		t.Fatalf("expected body %q, got %q", "ok", rec.Body.String())
+	}
+}
+

@@ -17,10 +17,12 @@ func New(logger *zap.Logger, registrars ...RouteRegistrar) http.Handler {
 	router := chi.NewRouter()
 	router.Use(platformmiddleware.RequestID)
 	router.Use(platformmiddleware.Logging(logger))
-	router.Get("/healthz", func(w http.ResponseWriter, _ *http.Request) {
+	healthHandler := func(w http.ResponseWriter, _ *http.Request) {
 		w.Header().Set("Content-Type", "text/plain; charset=utf-8")
 		_, _ = w.Write([]byte("ok"))
-	})
+	}
+	router.Get("/healthz", healthHandler)
+	router.Get("/health", healthHandler)
 
 	for _, registrar := range registrars {
 		if registrar != nil {
