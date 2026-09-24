@@ -1,5 +1,8 @@
 # Request-Service-API
 
+> This project is based on [Original Repository](https://github.com/nathang0147/Request-Service-API), which was developed as part of the original author's thesis.
+> The work in this repository is independently developed as part of my own thesis, with modifications and extensions to the original work.
+
 Request Service API for HR-facing verification orchestration across the VC ecosystem.
 
 ## Docs
